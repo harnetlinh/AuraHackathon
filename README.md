@@ -11,7 +11,7 @@ linux: cp .env.example .env
 ```
 
 ```sh
-window: create file .env coppy content file .env.example to .env
+window: create file .env copy content file .env.example to .env
 ```
 ## Run project
 ```sh
