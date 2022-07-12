@@ -22,10 +22,11 @@
     "http-errors": "^1.8.0",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
+    "knex": "^2.1.0",
     "mariadb": "^3.0.0",
     "mongoose": "^6.4.0",
     "morgan": "^1.10.0",
-    "sequelize": "^6.20.1",
+    "mysql": "^2.18.1",
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
