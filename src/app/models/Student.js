@@ -1,6 +1,8 @@
-import mongoose from "../../config/mongo";
+import mongoose from "mongoose";
 
-const PrizeSchema = new mongoose.Schema(
+const Schema = mongoose.Schema;
+
+const PrizeSchema = new Schema(
     {
         prizeName: {
             type: String,
