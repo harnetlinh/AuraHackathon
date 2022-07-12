@@ -1,7 +1,7 @@
 import client from './client.js'
 
 const router = (app) => {
-    app.use('/', client)
+    app.use('/v1', client)
 }
 
 export default router
