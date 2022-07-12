@@ -1,1 +1,2 @@
-import Sequelize from '../models/'
+import Student from '../models/Student.js';
+

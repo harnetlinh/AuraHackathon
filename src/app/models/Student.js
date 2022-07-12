@@ -1,6 +1,8 @@
-import mongoose from "../../config/mongo";
+import mongoose from "mongoose";
 
-const PrizeSchema = new mongoose.Schema(
+const Schema = mongoose.Schema;
+
+const PrizeSchema = new Schema(
     {
         prizeName: {
             type: String,
@@ -58,7 +60,10 @@ const StudentSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        prizeCollection: [PrizeSchema],
+        prizeCollection: {
+            type: PrizeSchema,
+            required: false
+        }
     },
     { strict: false },
     { timestamps: true }
