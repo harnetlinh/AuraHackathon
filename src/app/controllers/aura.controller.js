@@ -85,7 +85,7 @@ const getAllToken = async (req, res) => {
     #swagger.description = 'Get all NFT Token' */
   
     if (!client) {
-      client = await getAuraWasmClient();
+      var client = await getAuraWasmClient();
     }
     console.log(req.params.address);
     const allTokenOwner = {
