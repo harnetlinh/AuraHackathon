@@ -27,7 +27,8 @@
     "mongoose": "^6.4.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "swagger-ui-express": "^4.1.6"
+    "swagger-ui-express": "^4.1.6",
+    "web3.storage": "^4.3.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0"
