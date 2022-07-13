@@ -71,12 +71,10 @@ const MintNFT = async (req, res) => {
         res.status(200).json({
             data: [result],
             message: "Mint Result",
+            status: "success",
         });
-    } catch (err) {
-        res.status(500).json({
-            data: [err.message],
-            message: "Error",
-        });
+    } catch (error) {
+      res.status(500).json({ status: "error", error: error.message });
     }
 };
 
@@ -87,7 +85,7 @@ const getAllToken = async (req, res) => {
     if (!client) {
       var client = await getAuraWasmClient();
     }
-    console.log(req.params.address);
+
     const allTokenOwner = {
       tokens: {
         owner: String(req.params.address),
@@ -101,12 +99,10 @@ const getAllToken = async (req, res) => {
       res.status(200).json({
         data: [result],
         message: "Found Result",
+        status: "success",
       });
-    } catch (err) {
-      res.status(500).json({
-        data: [err.message],
-        message: "Error",
-      });
+    } catch (error) {
+      res.status(400).json({ status: "error", error: error.message });
     }
   };
 
