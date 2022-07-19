@@ -1,5 +1,6 @@
 import { makeGatewayURL } from "../../helpers/index.js";
 import { Web3Storage, File } from "web3.storage";
+import AvailablePrize from "../models/AvailablePrize.js";
 
 const web3Token = process.env.WEB3_STORAGE_TOKEN;
 const storage = new Web3Storage({ token: web3Token });
@@ -20,11 +21,23 @@ const uploadImageToWeb3 = async (req, res) => {
         const { image } = req.files;
         const filesObj = makeFileObjects(image);
         const cid = await storage.put(filesObj);
-        console.log("Content added with CID:", cid);
         const metadataGatewayURL = makeGatewayURL(cid, "metadata.json");
         const imageGatewayURL = makeGatewayURL(cid, image.name);
         const imageURI = `ipfs://${cid}/${image.name}`;
         const metadataURI = `ipfs://${cid}/metadata.json`;
+
+        await AvailablePrize.insertMany([
+            {
+                prizeName: image.name,
+                prizeDescription: "Test",
+                CID: cid,
+                imageURI,
+                metadataURI,
+                imageGatewayURL,
+                metadataGatewayURL,
+            },
+        ]);
+
 
         res.status(200).json({
             data: [
@@ -39,6 +52,7 @@ const uploadImageToWeb3 = async (req, res) => {
             message: "Upload Result",
             status: "success",
         });
+        
     } catch (error) {
       res.status(500).json({ status: "error", error: error.message });
     }
