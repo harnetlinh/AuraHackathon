@@ -6,6 +6,7 @@ import router from "./routes/index.js";
 import connect from "./config/mongo.js";
 import swaggerUi from "swagger-ui-express"
 import swaggerDocument from './swagger.js'
+import fileUpload from "express-fileupload";
 
 // set default timezone
 process.env.TZ = 'Asia/Ho_Chi_Minh';
@@ -18,6 +19,12 @@ connect();
 const corsOptions = {
     origin: "*"
 };
+app.use(fileUpload(
+    {
+        limits: { fileSize: 50 * 1024 * 1024 },
+        preserveExtension: true
+    }
+))
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(

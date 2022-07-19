@@ -4,15 +4,19 @@ const Schema = mongoose.Schema;
 
 const PrizeSchema = new Schema(
     {
-        prizeName: {
+        tokenId: {
             type: String,
             required: true
+        },
+        prizeName: {
+            type: String,
+            required: false,
         },
         prizeDescription: {
             type: String,
             required: false
         },
-        prizeImage: {
+        prizeImage: { // web3
             type: String,
             required: false
         },
@@ -20,19 +24,38 @@ const PrizeSchema = new Schema(
             type: String,
             required: false
         },
-        prizeDate: {
+        prizeDate: { // thời gian sv nhận thưởng
             type: Date,
             required: false,
             default: Date.now
         },
-        CID: {
+        CID: { //web3
             type: String,
             required: true
         },
-        statusID: {
+        statusID: { // trang thai
             type: Number,
-            required: true,
             default: 0
+        },
+        minter: {
+            type: String,
+            required: false
+        },
+        transactionHash: {
+            type: String,
+            required: false
+        },
+        height: {
+            type: Number,
+            required: false
+        },
+        gasWanted: {
+            type: Number,
+            required: false
+        },
+        gasUsed: {
+            type: Number,
+            required: false
         }
     }, 
     { strict: false },
@@ -60,10 +83,7 @@ const StudentSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        prizeCollection: {
-            type: PrizeSchema,
-            required: false
-        }
+        prizeCollection: [PrizeSchema]
     },
     { strict: false },
     { timestamps: true }
