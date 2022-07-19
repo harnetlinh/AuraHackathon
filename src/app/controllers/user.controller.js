@@ -40,11 +40,11 @@ const addWallet = async (req, res) => {
             throw new Error("Không tìm thấy user!");
         }
 
-        const checkAddress = await Student.findOne({ nftAddress: wallet });
+        // const checkAddress = await Student.findOne({ nftAddress: wallet });
 
-        if (checkAddress) {
-            throw new Error("Ví đã được gắn vào sinh viên khác!");
-        }
+        // if (checkAddress) {
+        //     throw new Error("Ví đã được gắn vào sinh viên khác!");
+        // }
 
         await Student.create({
             name:
