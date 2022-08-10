@@ -7,7 +7,7 @@ import crypto from "crypto";
 const checkAddress = async (req, res) => {
     try {
         const { user_code } = req.body;
-        const student = await Student.findOne({ studentCode: user_code });
+        const student = await Student.findOne({ studentCode: user_code.toUpperCase() });
 
         if (student) {
             res.status(200).json({
@@ -54,7 +54,7 @@ const addWallet = async (req, res) => {
                 " " +
                 infoUser[0].user_givenname,
             email: infoUser[0].user_email,
-            studentCode: infoUser[0].user_code,
+            studentCode: infoUser[0].user_code.toUpperCase(),
             studentLogin: infoUser[0].user_login,
             nftAddress: wallet,
             prizeCollection: [],
@@ -70,6 +70,7 @@ const addWallet = async (req, res) => {
 };
 
 const getAllNFTinWallet = async (req, res) => {
+    
     try {
         const { user_code } = req.query;
         const student = await Student.findOne({ studentCode: user_code });
