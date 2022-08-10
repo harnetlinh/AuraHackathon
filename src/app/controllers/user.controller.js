@@ -70,7 +70,6 @@ const addWallet = async (req, res) => {
 };
 
 const getAllNFTinWallet = async (req, res) => {
-    
     try {
         const { user_code } = req.query;
         const student = await Student.findOne({ studentCode: user_code });
