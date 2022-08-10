@@ -191,4 +191,17 @@ const exchangeNFT = async (req, res) => {
     }
 };
 
-export { addWallet, checkAddress, getAllNFTinWallet, exchangeNFT };
+const getAllNFT = async (req, res) => {
+    try {
+        const getAvailableNFT = await AvailablePrize.find();
+        return res.status(200).json({
+            status: "success",
+            message: "Lấy dữ liệu thành công!",
+            data: getAvailableNFT,
+        });
+    } catch (error) {
+        res.status(500).json({ status: "error", error: error.message });
+    }
+};
+
+export { addWallet, checkAddress, getAllNFTinWallet, exchangeNFT, getAllNFT };
