@@ -6,7 +6,7 @@ import crypto from "crypto";
 
 const checkAddress = async (req, res) => {
     try {
-        const { user_code } = req.body;
+        const { user_code } = req.query;
         const student = await Student.findOne({ studentCode: user_code.toUpperCase() });
 
         if (student) {
